@@ -2,14 +2,44 @@
 
 @section('content')
 
-<h2>Users</h2>
+<div class="mt-5">
+    <h2 class="text-center mb-4">Listagem de Usuários</h2>
 
-<a href="{{ route('users.create') }}">Create</a>
+    <div class="d-flex justify-content-end mb-3">
+        <a href="{{ route('users.create') }}" class="btn btn-primary">Criar novo usuário</a>
+    </div>
 
-<ul>
-    @foreach ($users as $user)
-        <li>{{ $user->name }} | <a href="{{ route('users.show',['user' => $user->id]) }}">Mostrar</a> | <a href="{{ route('users.edit',['user' => $user->id]) }}">Editar</a></li>
-    @endforeach
-</ul>
+    @if($users->count())
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>
+                            <a href="{{ route('users.show', ['user' => $user->id]) }}" class="btn btn-secondary btn-sm">Mostrar</a>
+                            <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="btn btn-success btn-sm">Editar</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-center">
+            {{ $users->links() }}
+        </div>
+    @else
+        <p class="text-center">No users found.</p>
+    @endif
+</div>
 
 @endsection

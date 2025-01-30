@@ -2,19 +2,43 @@
 
 @section('content')
 
-<h2>Edit</h2>
+<div class="mt-5">
+    <h2 class="text-center mb-4">Editar Usuário</h2>
 
-@if (session()->has('message'))
-    <p>{{ session('message') }}</p>
-@endif
+    @if (session()->has('message'))
+        <div class="alert alert-success" role="alert">
+            {{ session('message') }}
+        </div>
+    @endif
 
-<form action="{{ route('users.update', ['user' => $user->id]) }}" method="post">
-    @csrf
-    <input type="hidden" name="_method" value="PUT" >
-    <input type="text" name="name" value="{{ $user->name }}" >
-    <input type="email" name="email" value="{{ $user->email }}" >
-    <input type="password" name="password" value="{{ $user->password }}" >
-    <button type="submit">Editar</button>
-</form>
+    <div class="card mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+            <form action="{{ route('users.update', ['user' => $user->id]) }}" method="post">
+                @csrf
+                <input type="hidden" name="_method" value="PUT">
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" name="name" class="form-control" id="name" value="{{ $user->name }}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" value="{{ $user->email }}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" name="password" class="form-control" id="password" value="">
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a href="{{ route('users.index') }}" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" class="btn btn-warning">Editar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 @endsection
