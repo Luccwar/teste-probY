@@ -5,6 +5,12 @@
 <div class="mt-5">
     <h2 class="text-center mb-4">Listagem de Usuários</h2>
 
+    @if(session('message'))
+        <div class="alert {{ session('message_type') == 'success' ? 'alert-success' : 'alert-danger' }}">
+            <strong>{{ session('message') }}</strong>
+        </div>
+    @endif
+
     <div class="d-flex justify-content-end mb-3">
         <a href="{{ route('users.create') }}" class="btn btn-primary">Criar novo usuário</a>
     </div>

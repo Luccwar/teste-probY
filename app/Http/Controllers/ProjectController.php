@@ -106,6 +106,6 @@ class ProjectController extends Controller
     {
         $this->project->where('id', $id)->delete();
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('message', 'Projeto excluído com sucesso.')->with('message_type', 'success');
     }
 }

@@ -121,6 +121,6 @@ class UserController extends Controller
 
         $this->user->where('id', $id)->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('message', 'Usuário excluído com sucesso.')->with('message_type', 'success');
     }
 }
