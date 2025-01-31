@@ -114,6 +114,11 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
+        //Por mais que o erro "Undefined method 'user'" possa aparecer para você, o código funciona como o esperado
+        if (auth()->user()->id == $id) {
+            return redirect()->back()->with('message', 'Não é possível excluir o usuário logado no sistema.')->with('message_type', 'error');
+        }
+
         $this->user->where('id', $id)->delete();
 
         return redirect()->route('users.index');

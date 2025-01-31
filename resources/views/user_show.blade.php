@@ -5,6 +5,12 @@
 <div class="mt-5">
     <h2 class="text-center mb-4">Detalhes do Usuário</h2>
 
+    @if(session('message'))
+        <div class="alert {{ session('message_type') == 'success' ? 'alert-success' : 'alert-danger' }}">
+            <strong>{{ session('message') }}</strong>
+        </div>
+    @endif
+
     <div class="card mx-auto" style="max-width: 500px;">
         <div class="card-body">
             <h5 class="card-title">Informações do Usuário</h5>
