@@ -3,17 +3,17 @@
 @section('content')
 
 <div class="mt-5">
-    <h2 class="text-center mb-4">Listagem de Projetos</h2>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Listagem de Projetos</h2>
+        <a href="{{ route('projects.create') }}" class="btn btn-primary ms-auto">Criar novo projeto</a>
+    </div>
 
     @if(session('message'))
         <div class="alert {{ session('message_type') == 'success' ? 'alert-success' : 'alert-danger' }}">
             <strong>{{ session('message') }}</strong>
         </div>
     @endif
-
-    <div class="d-flex justify-content-end mb-3">
-        <a href="{{ route('projects.create') }}" class="btn btn-primary">Criar novo projeto</a>
-    </div>
 
     @if($projects->count())
         <table class="table table-striped">
