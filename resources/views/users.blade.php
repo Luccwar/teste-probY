@@ -26,7 +26,7 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            <a href="{{ route('users.show', ['user' => $user->id]) }}" class="btn btn-secondary btn-sm">Mostrar</a>
+                            <a href="{{ route('users.show', ['user' => $user->id]) }}" class="btn btn-secondary btn-sm">Inspecionar</a>
                             <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="btn btn-success btn-sm">Editar</a>
                         </td>
                     </tr>
@@ -38,7 +38,7 @@
             {{ $users->links() }}
         </div>
     @else
-        <p class="text-center">No users found.</p>
+        <p class="text-center">Não existem usuários cadastrados.</p>
     @endif
 </div>
 
