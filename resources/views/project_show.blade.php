@@ -17,12 +17,12 @@
             </ul>
 
             <div class="mt-3 d-flex justify-content-between">
-                <a href="{{ route('projects.index') }}" class="btn btn-secondary btn-sm">Voltar</a>
+                <a href="{{ route('projects.index') }}" class="btn btn-secondary">Voltar</a>
 
                 <form action="{{ route('projects.destroy', ['project' => $project->id]) }}" method="post">
                     @csrf
                     <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
+                    <button type="submit" class="btn btn-danger">Deletar</button>
                 </form>
             </div>
         </div>
